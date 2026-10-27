@@ -1,0 +1,38 @@
+# OrangeFox settings
+OF_DEFAULT_KEYMASTER_VERSION := 4.1
+OF_FLASHLIGHT_ENABLE := 1
+OF_NO_REFLASH_CURRENT_ORANGEFOX := 1
+OF_NO_SPLASH_CHANGE := 1
+OF_FORCE_CASEFOLDING := 1
+
+# OrangeFox GUI settings
+OF_SCREEN_H := 2400
+OF_STATUS_H := 95
+OF_STATUS_INDENT_LEFT := 48
+OF_STATUS_INDENT_RIGHT := 48
+OF_ALLOW_DISABLE_NAVBAR := 0
+OF_CLOCK_POS := 1
+
+# Recovery additional features
+OF_LOOP_DEVICE_ERRORS_TO_LOG := 1
+OF_ENABLE_LPTOOLS := 1
+OF_USE_LZ4_COMPRESSION := true
+OF_DISPLAY_FORMAT_FILESYSTEMS_DEBUG_INFO := 1
+
+# OTA
+OF_DISABLE_OTA_MENU := 1
+OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
+OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
+
+# Inherit from common AOSP config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+
+# Inherit from our custom device config
+$(call inherit-product, device/omix/Neo_O1/device.mk)
+
+# Device Overrides
+PRODUCT_DEVICE := Neo_O1
+PRODUCT_NAME := fox_Neo_O1
+PRODUCT_BRAND := Omix
+PRODUCT_MODEL := Omix Neo O1
+PRODUCT_MANUFACTURER := Omix

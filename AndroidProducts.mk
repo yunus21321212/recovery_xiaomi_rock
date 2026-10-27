@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_rock.mk
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/fox_Neo_O1.mk
 
-COMMON_LUNCH_CHOICES := twrp_rock-eng
+COMMON_LUNCH_CHOICES := \
+    fox_Neo_O1-eng \
+    fox_Neo_O1-userdebug

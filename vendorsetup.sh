@@ -1,23 +1,11 @@
- #
-#	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2020-2024 The OrangeFox Recovery Project
 #
-#	OrangeFox is free software: you can redistribute it and/or modify
-#	it under the terms of the GNU General Public License as published by
-#	the Free Software Foundation, either version 3 of the License, or
-#	any later version.
+#   This file is part of the OrangeFox Recovery Project
+#   Copyright (C) 2024 The OrangeFox Recovery Project
 #
-#	OrangeFox is distributed in the hope that it will be useful,
-#	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#	GNU General Public License for more details.
+#   Please maintain this if you use this script or any part of it
 #
-# 	This software is released under GPL version 3 or any later version.
-#	See <http://www.gnu.org/licenses/>.
-#
-# 	Please maintain this if you use this script or any part of it
-#
-FDEVICE="rock"
+
+FDEVICE="Neo_O1"
 #set -o xtrace
 
 fox_get_target_device() {
@@ -35,13 +23,13 @@ if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
 fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
-	export LC_ALL="C.UTF-8"
- 	export ALLOW_MISSING_DEPENDENCIES=true
+    export LC_ALL="C.UTF-8"
+    export ALLOW_MISSING_DEPENDENCIES=true
 
- 	#OFR build settings & info
-	export TARGET_DEVICE_ALT="rock,stone"
-	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+    #OFR build settings & info
+    export TARGET_DEVICE_ALT="Neo_O1"
+    export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
     export FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH=1
     export FOX_VENDOR_BOOT_RECOVERY=1
     export FOX_DELETE_MAGISK_ADDON=1
@@ -60,7 +48,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_ENABLE_LPTOOLS=1
 
     #OTA
-	export FOX_AB_DEVICE=1
+    export FOX_AB_DEVICE=1
     export FOX_VIRTUAL_AB_DEVICE=1
     export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
 
@@ -68,12 +56,12 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_FL_PATH1=/sys/class/leds/flashlight
     export OF_FL_PATH2=/sys/class/leds/torch-light0
 
-	lunch twrp_$FDEVICE-eng
-	# let's see what are our build VARs
-	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
-  	   export | grep "FOX" >> $FOX_BUILD_LOG_FILE
-  	   export | grep "OF_" >> $FOX_BUILD_LOG_FILE
-   	   export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
-  	   export | grep "TW_" >> $FOX_BUILD_LOG_FILE
- 	fi
+    lunch fox_$FDEVICE-eng
+    # let's see what are our build VARs
+    if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
+       export | grep "FOX" >> $FOX_BUILD_LOG_FILE
+       export | grep "OF_" >> $FOX_BUILD_LOG_FILE
+       export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
+       export | grep "TW_" >> $FOX_BUILD_LOG_FILE
+    fi
 fi
